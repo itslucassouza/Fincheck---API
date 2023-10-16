@@ -16,6 +16,7 @@ export class AuthService {
 
         const user = await this.usersRepo.findUnique({
             where: {
+                
                 email: email
             }
         });
@@ -30,7 +31,9 @@ export class AuthService {
             throw new UnauthorizedException('invalid credentials');
         }
 
-        return { user }
+        const accessToken = await this.jwtService.signAsync({ sub: user.id})
+
+        return { accessToken }
     }
 
 }
