@@ -6,10 +6,10 @@ class Env {
     @IsNotEmpty()
     dbURL: string;
 
-     @IsString()
-     @IsNotEmpty()
-     @NotEquals('unsecure_jwt_secret')
-    jwtSecret: string; 
+    @IsString()
+    @IsNotEmpty()
+    @NotEquals('unsecure_jwt_secret')
+    jwtSecret: string;
 }
 
 export const env: Env = plainToInstance(Env, {
@@ -19,6 +19,6 @@ export const env: Env = plainToInstance(Env, {
 
 const errors = validateSync(env);
 
-if(errors.length > 0) {
+if (errors.length > 0) {
     throw new Error(JSON.stringify(errors, null, 2))
 }
