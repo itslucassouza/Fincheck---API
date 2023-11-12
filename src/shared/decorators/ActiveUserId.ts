@@ -9,5 +9,5 @@ export const ActiveUSerId = createParamDecorator<undefined>((data, context: Exec
         throw new UnauthorizedException();
     }
 
-    return { userId: request.userId };
+    return request.userId;
 });
